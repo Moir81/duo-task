@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: duobackend
+spec:
+  type: ClusterIP
+  selector:
+    app: duobackend
+  ports:
+  - protocol: TCP
+    port: 5500
+    targetPort: 5500
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duobackend
+  labels:
+    app: duobackend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: duobackend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: duobackend
+    spec:
+      containers:
+      - name: duobackend
+        image: moir81/duotask:latest
+        ports:
+        - containerPort: 5500
