@@ -4,9 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
-            rm -rf duo-task
-            git clone https://github.com/Moir81/duo-task.git
-            cd duo-task        
+   
             docker build -t moir81/duo-task . 
             docker push moir81/duo-task
             '''
