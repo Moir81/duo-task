@@ -18,5 +18,12 @@ pipeline {
                 '''
             }
         }
+        stage('Clean') {
+            steps {
+                sh '''
+            docker system prune --force
+                '''
+            }
+        }        
     }
 }
