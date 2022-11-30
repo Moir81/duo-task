@@ -33,6 +33,7 @@ spec:
     spec:
       containers:
       - name: duobackend
+        imagePullPolicy: Always
         image: moir81/duotask:latest
         ports:
         - containerPort: 5500
