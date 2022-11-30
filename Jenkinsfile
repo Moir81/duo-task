@@ -6,9 +6,9 @@ pipeline {
                  script {
                     if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
-                        docker build -t moir81/duotask:latest -t moir81/duotask:$BUILD_NUMBER . 
-                        docker push moir81/duotask:$BUILD_NUMBER
-                        docker push moir81/duotask:latest
+                        docker build -t gcr.io/lbg-python-cohort-8/moir-duotask:latest -t gcr.io/lbg-python-cohort-8/moir-duotask:$BUILD_NUMBER . 
+                        docker push gcr.io/lbg-python-cohort-8/moir-duotask:$BUILD_NUMBER
+                        docker push gcr.io/lbg-python-cohort-8/moir-duotask:latest
                         '''
                     }  else {
                         sh "echo 'Push not required!'"

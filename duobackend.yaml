@@ -34,6 +34,6 @@ spec:
       containers:
       - name: duobackend
         imagePullPolicy: Always
-        image: moir81/duotask:latest
+        image: gcr.io/lbg-python-cohort-8/moir-duotask:latest
         ports:
         - containerPort: 5500
