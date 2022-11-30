@@ -6,7 +6,7 @@ pipeline {
                  script {
                     if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
-                        docker build -t moir81/duo-task:latest -t moir81/$BUILD_NUMBER . 
+                        docker build -t moir81/duo-task:latest -t moir81/duo-task:$BUILD_NUMBER . 
                         docker push moir81/duo-task:$BUILD_NUMBER
                         docker push moir81/duo-task:latest
                         '''
