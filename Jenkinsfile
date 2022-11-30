@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                  script {
-                    if (env.BRANCH_NAME == 'master') {
+                    if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
                         docker build -t moir81/duo-task:latest -t moir81/$BUILD_NUMBER . 
                         docker push moir81/duo-task:$BUILD_NUMBER
@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
-                    if (env.BRANCH_NAME == 'dev') {
+                    if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
                         kubectl apply -f duobackend.yaml --namespace=dev
                         kubectl apply -f duofrontend.yaml --namespace=dev
