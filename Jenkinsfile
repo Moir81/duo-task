@@ -23,7 +23,7 @@ pipeline {
                     if (env.GIT_BRANCH == 'origin/dev') {
                         sh '''
                         kubectl apply -f duobackend.yaml --namespace=dev
-                        kubectl rollout restart deployment backend --namespace=dev
+                        kubectl rollout restart deployment duobackend --namespace=dev
                         kubectl apply -f duofrontend.yaml --namespace=dev
                         '''
                     }  else {
